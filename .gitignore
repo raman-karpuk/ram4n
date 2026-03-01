@@ -19,8 +19,8 @@ Thumbs.db
 *.swp
 *.swo
 
-# Internal docs
-PROJECT.md
+# Internal docs (plans, notes, credentials, etc.)
+docs/
 
 # Astro generated types
 .astro/
