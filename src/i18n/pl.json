@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Raman — Programista i Inżynier",
+    "description": "Portfolio Ramana — programista z Polski, tworzący nowoczesne aplikacje webowe."
+  },
+  "nav": {
+    "about": "O mnie",
+    "projects": "Projekty",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "greeting": "Cześć, jestem",
+    "name": "Raman",
+    "role": "Programista",
+    "subtitle": "Tworzę nowoczesne rozwiązania webowe z czystym kodem i przemyślanym designem."
+  },
+  "about": {
+    "title": "O mnie",
+    "description": "Jestem programistą mieszkającym w Polsce, z pasją do tworzenia eleganckich i wydajnych aplikacji webowych. Skupiam się na czystej architekturze, nowoczesnych narzędziach i dostarczaniu doświadczeń, które po prostu działają.",
+    "stack": "Moje narzędzia to JavaScript/TypeScript, React, Node.js, infrastruktura chmurowa i wszystko pomiędzy."
+  },
+  "projects": {
+    "title": "Projekty",
+    "viewProject": "Zobacz projekt",
+    "comingSoon": "Więcej projektów wkrótce."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "description": "Masz pomysł na projekt lub po prostu chcesz się przywitać? Napisz do mnie.",
+    "email": "Napisz e-mail",
+    "or": "lub znajdź mnie na"
+  },
+  "footer": {
+    "copyright": "Raman. Wszelkie prawa zastrzeżone."
+  },
+  "langSwitcher": {
+    "label": "Język"
+  }
+}

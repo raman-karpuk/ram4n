@@ -1,0 +1,137 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  stack: string;
+}
+
+const { title, description, stack } = Astro.props;
+---
+
+<section class="about" id="about">
+  <div class="about__inner container">
+    <div class="about__label" data-animate="scroll-fade">
+      <span class="about__label-line"></span>
+      <span class="about__label-text">{title}</span>
+    </div>
+
+    <div class="about__content">
+      <p class="about__text" data-animate="scroll-fade">{description}</p>
+      <p class="about__stack" data-animate="scroll-fade">{stack}</p>
+    </div>
+
+    <div class="about__marquee" data-animate="scroll-fade" aria-hidden="true">
+      <div class="about__marquee-track">
+        <span>TypeScript</span>
+        <span>&mdash;</span>
+        <span>React</span>
+        <span>&mdash;</span>
+        <span>Node.js</span>
+        <span>&mdash;</span>
+        <span>Astro</span>
+        <span>&mdash;</span>
+        <span>Cloud</span>
+        <span>&mdash;</span>
+        <span>TypeScript</span>
+        <span>&mdash;</span>
+        <span>React</span>
+        <span>&mdash;</span>
+        <span>Node.js</span>
+        <span>&mdash;</span>
+        <span>Astro</span>
+        <span>&mdash;</span>
+        <span>Cloud</span>
+        <span>&mdash;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    position: relative;
+  }
+
+  .about__inner {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .about__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .about__label-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .about__label-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+
+  .about__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    max-width: 900px;
+  }
+
+  .about__text {
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .about__stack {
+    font-size: clamp(1rem, 1.3vw, 1.1rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  .about__marquee {
+    overflow: hidden;
+    margin-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-sm) 0;
+  }
+
+  .about__marquee-track {
+    display: flex;
+    gap: var(--space-md);
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+    font-size: clamp(0.875rem, 1.2vw, 1rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Animate elements start hidden */
+  [data-animate="scroll-fade"] {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  @media (max-width: 768px) {
+    .about__content {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "title": "Raman — Developer & Engineer",
+    "description": "Personal portfolio of Raman — software developer based in Poland, building modern web experiences."
+  },
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Raman",
+    "role": "Software Developer",
+    "subtitle": "Building modern web experiences with clean code and thoughtful design."
+  },
+  "about": {
+    "title": "About",
+    "description": "I'm a software developer based in Poland with a passion for creating elegant, performant web applications. I focus on clean architecture, modern tooling, and delivering experiences that feel right.",
+    "stack": "My toolkit includes modern JavaScript/TypeScript, React, Node.js, cloud infrastructure, and everything in between."
+  },
+  "projects": {
+    "title": "Projects",
+    "viewProject": "View Project",
+    "comingSoon": "More projects coming soon."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a project in mind or just want to say hello? Feel free to reach out.",
+    "email": "Email me",
+    "or": "or find me on"
+  },
+  "footer": {
+    "copyright": "Raman. All rights reserved."
+  },
+  "langSwitcher": {
+    "label": "Language"
+  }
+}

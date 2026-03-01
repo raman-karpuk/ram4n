@@ -1,0 +1,128 @@
+---
+import { type Locale, locales, localeLabels, getLocalePath } from "../i18n";
+
+interface Props {
+  locale: Locale;
+  nav: {
+    about: string;
+    projects: string;
+    contact: string;
+  };
+}
+
+const { locale, nav } = Astro.props;
+---
+
+<header class="header" data-header>
+  <div class="header__inner container">
+    <a href={getLocalePath(locale)} class="header__logo" aria-label="ram4n home">
+      ram<span class="header__logo-accent">4</span>n
+    </a>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <a href="#about" class="header__link">{nav.about}</a>
+      <a href="#projects" class="header__link">{nav.projects}</a>
+      <a href="#contact" class="header__link">{nav.contact}</a>
+    </nav>
+
+    <div class="header__lang">
+      {locales.map((loc) => (
+        <a
+          href={getLocalePath(loc)}
+          class:list={["header__lang-link", { active: loc === locale }]}
+          aria-label={`Switch to ${loc}`}
+        >
+          {localeLabels[loc]}
+        </a>
+      ))}
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-height);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(10, 10, 10, 0.8);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-normal) var(--ease-out);
+  }
+
+  .header.scrolled {
+    border-bottom-color: var(--color-border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .header__logo {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  .header__logo-accent {
+    color: var(--color-accent);
+  }
+
+  .header__nav {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .header__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color var(--duration-fast) var(--ease-out);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .header__link:hover {
+    color: var(--color-text);
+  }
+
+  .header__lang {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .header__lang-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: var(--color-text-muted);
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .header__lang-link:hover {
+    color: var(--color-text);
+  }
+
+  .header__lang-link.active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  @media (max-width: 768px) {
+    .header__nav {
+      gap: var(--space-sm);
+    }
+
+    .header__link {
+      font-size: 0.75rem;
+    }
+  }
+</style>

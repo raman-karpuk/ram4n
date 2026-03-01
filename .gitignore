@@ -19,6 +19,9 @@ Thumbs.db
 *.swp
 *.swo
 
+# Astro generated types
+.astro/
+
 # Debug logs
 npm-debug.log*
 yarn-debug.log*

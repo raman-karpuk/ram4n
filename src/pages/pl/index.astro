@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Projects from "../../components/Projects.astro";
+import Contact from "../../components/Contact.astro";
+import Footer from "../../components/Footer.astro";
+import { t } from "../../i18n";
+
+const locale = "pl" as const;
+const i = t(locale);
+---
+
+<BaseLayout title={i.meta.title} description={i.meta.description} locale={locale}>
+  <Header locale={locale} nav={i.nav} />
+  <main>
+    <Hero
+      greeting={i.hero.greeting}
+      name={i.hero.name}
+      role={i.hero.role}
+      subtitle={i.hero.subtitle}
+    />
+    <About
+      title={i.about.title}
+      description={i.about.description}
+      stack={i.about.stack}
+    />
+    <Projects
+      title={i.projects.title}
+      viewProject={i.projects.viewProject}
+      comingSoon={i.projects.comingSoon}
+    />
+    <Contact
+      title={i.contact.title}
+      description={i.contact.description}
+      emailLabel={i.contact.email}
+      or={i.contact.or}
+    />
+  </main>
+  <Footer copyright={i.footer.copyright} />
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import Lenis from "lenis";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+
+    const header = document.querySelector("[data-header]");
+    if (header) {
+      ScrollTrigger.create({
+        start: "top -80",
+        onUpdate: (self) => { header.classList.toggle("scrolled", self.progress > 0); },
+      });
+    }
+
+    document.querySelectorAll('[data-animate="fade-up"]').forEach((el) => {
+      const delay = parseFloat(el.getAttribute("data-delay") || "0");
+      gsap.to(el, { opacity: 1, y: 0, duration: 0.8, delay: 0.3 + delay, ease: "power3.out" });
+    });
+
+    document.querySelectorAll('[data-animate="scroll-fade"]').forEach((el) => {
+      gsap.to(el, {
+        scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" },
+        opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", (e) => {
+        e.preventDefault();
+        const href = anchor.getAttribute("href");
+        if (!href) return;
+        const target = document.querySelector(href);
+        if (target) lenis.scrollTo(target as HTMLElement, { offset: -72 });
+      });
+    });
+  </script>
+</BaseLayout>

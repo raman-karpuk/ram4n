@@ -1,0 +1,159 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  emailLabel: string;
+  or: string;
+}
+
+const { title, description, emailLabel, or } = Astro.props;
+const email = "hello@ram4n.com";
+---
+
+<section class="contact" id="contact">
+  <div class="contact__inner container">
+    <div class="contact__label" data-animate="scroll-fade">
+      <span class="contact__label-line"></span>
+      <span class="contact__label-text">{title}</span>
+    </div>
+
+    <div class="contact__content">
+      <p class="contact__text" data-animate="scroll-fade">{description}</p>
+
+      <a href={`mailto:${email}`} class="contact__email" data-animate="scroll-fade">
+        <span class="contact__email-label">{emailLabel}</span>
+        <span class="contact__email-address">{email}</span>
+        <span class="contact__email-arrow">&rarr;</span>
+      </a>
+
+      <div class="contact__social" data-animate="scroll-fade">
+        <span class="contact__social-or">{or}</span>
+        <div class="contact__social-links">
+          <a href="https://github.com/vieditcom" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__inner {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .contact__label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .contact__label-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .contact__label-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+
+  .contact__content {
+    max-width: 600px;
+  }
+
+  .contact__text {
+    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-lg);
+  }
+
+  .contact__email {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: all var(--duration-normal) var(--ease-out);
+    margin-bottom: var(--space-md);
+  }
+
+  .contact__email:hover {
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+  }
+
+  .contact__email:hover .contact__email-arrow {
+    transform: translateX(6px);
+  }
+
+  .contact__email-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+
+  .contact__email-address {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .contact__email-arrow {
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .contact__social {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .contact__social-or {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .contact__social-links {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .contact__social-links a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .contact__social-links a:hover {
+    border-bottom-color: var(--color-accent);
+  }
+
+  [data-animate="scroll-fade"] {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  @media (max-width: 768px) {
+    .contact__email {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-xs);
+    }
+  }
+</style>
