@@ -69,6 +69,21 @@ const ogLocaleMap: Record<Locale, string> = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+    <!-- JSON-LD: Person -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Raman",
+      "url": siteUrl,
+      "email": "hello@ram4n.com",
+      "jobTitle": "Software Developer",
+      "sameAs": [
+        "https://github.com/vieditcom"
+      ],
+      "knowsLanguage": ["en", "ru", "pl"],
+      "image": `${siteUrl}/og-image.png`
+    })} />
   </head>
   <body>
     <slot />
